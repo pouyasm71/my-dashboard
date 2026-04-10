@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ForexKYC — Login</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles/main.css">
 </head>
 <body class="auth-body">
 
@@ -75,7 +75,7 @@
       setTimeout(function() {
         sessionStorage.setItem('kyc_logged_in', '1');
         sessionStorage.setItem('kyc_user_email', email);
-        window.location.href = 'dashboard.html';
+        window.location.href = 'pages/dashboard.html';
       }, 700);
     });
 

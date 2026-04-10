@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ForexKYC — Overview</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+
+<div class="layout">
+  <!-- Components inject here -->
+  <div id="sidebar-root"></div>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <div class="main">
+    <div id="header-root"></div>
+
+    <div class="content">
+
+      <!-- ── Overview ── -->
+      <div class="section active" id="sec-overview">
+        <div class="page-title">Overview</div>
+        <p class="page-subtitle">KYC compliance at a glance &mdash; Apr 10, 2026</p>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-top">
+              <span class="stat-label">Pending Cases</span>
+              <div class="stat-icon blue">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+              </div>
+            </div>
+            <div class="stat-value">23</div>
+            <div class="stat-change up">&#8593; 4 <span>vs yesterday</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-top">
+              <span class="stat-label">Approved Clients</span>
+              <div class="stat-icon green">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              </div>
+            </div>
+            <div class="stat-value">142</div>
+            <div class="stat-change up">&#8593; 8 <span>this week</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-top">
+              <span class="stat-label">Rejected</span>
+              <div class="stat-icon red">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg>
+              </div>
+            </div>
+            <div class="stat-value">7</div>
+            <div class="stat-change down">&#8593; 2 <span>this cycle</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-top">
+              <span class="stat-label">Approval Rate</span>
+              <div class="stat-icon yellow">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+              </div>
+            </div>
+            <div class="stat-value">87<span class="stat-value-sm">%</span></div>
+            <div class="stat-change neutral">&#8212; <span>last 30 days</span></div>
+          </div>
+        </div>
+
+        <!-- Quick-link cards -->
+        <div class="summary-grid">
+          <a href="pending.html" class="summary-card">
+            <div class="summary-card-icon" style="background:var(--primary-container);color:var(--on-primary-cont)">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            </div>
+            <div><div class="summary-card-count">23</div><div class="summary-card-label">Awaiting Review</div></div>
+            <span class="summary-card-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
+          </a>
+          <a href="approved.html" class="summary-card">
+            <div class="summary-card-icon" style="background:var(--success-container);color:var(--on-success-cont)">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            </div>
+            <div><div class="summary-card-count">142</div><div class="summary-card-label">Verified Clients</div></div>
+            <span class="summary-card-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
+          </a>
+          <a href="rejected.html" class="summary-card">
+            <div class="summary-card-icon" style="background:var(--error-container);color:var(--on-error-cont)">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg>
+            </div>
+            <div><div class="summary-card-count">7</div><div class="summary-card-label">Rejected Applications</div></div>
+            <span class="summary-card-arrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
+          </a>
+        </div>
+
+        <div class="two-col" style="margin-top:0">
+          <div class="card">
+            <div class="card-header">
+              <div><div class="card-title">Risk Distribution</div><div class="card-subtitle">All active clients by risk level</div></div>
+            </div>
+            <div style="padding:22px">
+              <div class="progress-wrap">
+                <div class="progress-row"><span class="progress-label">Low Risk (0–30)</span><div class="progress-bar"><div class="progress-fill green" style="width:68%"></div></div><span class="progress-pct">68%</span></div>
+                <div class="progress-row"><span class="progress-label">Medium Risk (31–60)</span><div class="progress-bar"><div class="progress-fill" style="width:24%"></div></div><span class="progress-pct">24%</span></div>
+                <div class="progress-row"><span class="progress-label">High Risk (61–85)</span><div class="progress-bar"><div class="progress-fill yellow" style="width:6%"></div></div><span class="progress-pct">6%</span></div>
+                <div class="progress-row"><span class="progress-label">Critical (86–100)</span><div class="progress-bar"><div class="progress-fill red" style="width:2%"></div></div><span class="progress-pct">2%</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div><div class="card-title">Recent Activity</div><div class="card-subtitle">Latest KYC actions today</div></div>
+            </div>
+            <div class="activity-list" id="activity-overview"></div>
+          </div>
+        </div>
+      </div><!-- /overview -->
+
+      <!-- ── Document Review ── -->
+      <div class="section" id="sec-documents">
+        <div class="page-title">Document Review</div>
+        <p class="page-subtitle">11 documents awaiting manual inspection</p>
+        <div class="card">
+          <div class="card-header">
+            <div><div class="card-title">Documents Pending Review</div><div class="card-subtitle">Verify authenticity and match against client records</div></div>
+            <span class="card-action">Filter</span>
+          </div>
+          <div class="doc-grid" id="doc-grid"></div>
+        </div>
+        <div class="two-col">
+          <div class="card">
+            <div class="card-header"><div><div class="card-title">Document Type Breakdown</div><div class="card-subtitle">Acceptance rate per category</div></div></div>
+            <div style="padding:22px">
+              <div class="progress-wrap">
+                <div class="progress-row"><span class="progress-label">Passport</span><div class="progress-bar"><div class="progress-fill green" style="width:92%"></div></div><span class="progress-pct">92%</span></div>
+                <div class="progress-row"><span class="progress-label">National ID</span><div class="progress-bar"><div class="progress-fill green" style="width:88%"></div></div><span class="progress-pct">88%</span></div>
+                <div class="progress-row"><span class="progress-label">Proof of Address</span><div class="progress-bar"><div class="progress-fill" style="width:74%"></div></div><span class="progress-pct">74%</span></div>
+                <div class="progress-row"><span class="progress-label">Bank Statement</span><div class="progress-bar"><div class="progress-fill yellow" style="width:65%"></div></div><span class="progress-pct">65%</span></div>
+                <div class="progress-row"><span class="progress-label">Source of Funds</span><div class="progress-bar"><div class="progress-fill red" style="width:51%"></div></div><span class="progress-pct">51%</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div><div class="card-title">Recent Activity</div><div class="card-subtitle">Latest document actions</div></div></div>
+            <div class="activity-list" id="activity-docs"></div>
+          </div>
+        </div>
+      </div><!-- /documents -->
+
+      <!-- ── Risk Checks ── -->
+      <div class="section" id="sec-risk">
+        <div class="page-title">Risk Checks</div>
+        <p class="page-subtitle">4 accounts flagged for enhanced due diligence (EDD)</p>
+        <div class="stats-grid" style="grid-template-columns:repeat(3,1fr);margin-bottom:24px">
+          <div class="stat-card"><div class="stat-top"><span class="stat-label">High Risk</span><div class="stat-icon red"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg></div></div><div class="stat-value">4</div><div class="stat-change down">&#8593; 1 <span>new this week</span></div></div>
+          <div class="stat-card"><div class="stat-top"><span class="stat-label">PEP Matches</span><div class="stat-icon yellow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div></div><div class="stat-value">2</div><div class="stat-change neutral">&#8212; <span>unchanged</span></div></div>
+          <div class="stat-card"><div class="stat-top"><span class="stat-label">Sanctions Hits</span><div class="stat-icon red"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg></div></div><div class="stat-value">1</div><div class="stat-change down">&#8593; 1 <span>critical alert</span></div></div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div><div class="card-title">Flagged Accounts — Enhanced Due Diligence Required</div><div class="card-subtitle">Additional review required before any trading activity</div></div>
+            <span class="card-action">Generate Report</span>
+          </div>
+          <div class="risk-grid" id="risk-grid"></div>
+        </div>
+      </div><!-- /risk -->
+
+    </div><!-- /content -->
+  </div><!-- /main -->
+</div><!-- /layout -->
+
+<script src="../scripts/shared.js"></script>
+<script src="../scripts/data.js"></script>
+<script src="../components/sidebar.js"></script>
+<script src="../components/header.js"></script>
+<script src="../scripts/pages/dashboard.js"></script>
+</body>
+</html>

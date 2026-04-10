@@ -1,0 +1,11 @@
+/* ============================================================
+   MAIN — Entry point, imports all partials in dependency order
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import 'variables.css';
+@import 'base.css';
+@import 'auth.css';
+@import 'layout.css';
+@import 'components.css';
+@import 'responsive.css';
