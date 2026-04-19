@@ -33,9 +33,37 @@ A full-stack KYC (Know Your Customer) compliance dashboard for forex brokerages.
 
 ```
 my-dashboard/
-├── index.html              # Login page (entry point)
-├── signup.html             # Registration page
-├── .env                    # Not committed — copy from backend/.env.example
+├── .gitignore
+├── README.md
+│
+├── frontend/               # All static frontend files (no build step)
+│   ├── index.html          # Login page (entry point)
+│   ├── signup.html         # Registration page
+│   ├── components/
+│   │   ├── sidebar.js      # renderSidebar(activeItem)
+│   │   └── header.js       # renderHeader({ title, subtitle })
+│   ├── pages/
+│   │   ├── dashboard.html  # Overview + Document Review + Risk + KYC Submissions
+│   │   ├── pending.html
+│   │   ├── approved.html
+│   │   └── rejected.html
+│   ├── scripts/
+│   │   ├── config.js       # API_BASE URL — edit this for your environment
+│   │   ├── shared.js       # Auth guard, theme, user, toast, badges, CSV export
+│   │   ├── data.js         # Static mock data (risk, documents, activity)
+│   │   └── pages/
+│   │       ├── dashboard.js
+│   │       ├── pending.js
+│   │       ├── approved.js
+│   │       └── rejected.js
+│   └── styles/
+│       ├── main.css        # Entry point — imports all partials
+│       ├── variables.css   # Material 3 design tokens (light + dark)
+│       ├── base.css
+│       ├── auth.css
+│       ├── layout.css
+│       ├── components.css
+│       └── responsive.css
 │
 ├── backend/                # Node.js + Express API
 │   ├── index.js            # Express server entry point
@@ -48,31 +76,11 @@ my-dashboard/
 │   ├── lib/
 │   │   └── prisma.js       # Shared PrismaClient instance (pg adapter)
 │   ├── controllers/
-│   │   ├── authController.js   # register, login
-│   │   └── kycController.js    # getAll, create, update, remove
+│   │   ├── authController.js
+│   │   └── kycController.js
 │   └── routes/
-│       ├── auth.js             # POST /api/auth/register, /api/auth/login
-│       └── kyc.js              # GET/POST/PUT/DELETE /api/kyc_submissions
-│
-├── pages/                  # Dashboard HTML pages
-│   ├── dashboard.html      # Overview + Document Review + Risk Checks + KYC Submissions
-│   ├── pending.html
-│   ├── approved.html
-│   └── rejected.html
-│
-├── components/             # Reusable injected UI components
-│   ├── sidebar.js          # renderSidebar(activeItem)
-│   └── header.js           # renderHeader({ title, subtitle })
-│
-├── scripts/
-│   ├── config.js           # API_BASE URL — edit this for your environment
-│   ├── shared.js           # Auth guard, theme, user, toast, badges, CSV export
-│   ├── data.js             # Static mock data (risk, documents, activity)
-│   └── pages/
-│       ├── dashboard.js    # Tab logic + KYC Submissions CRUD
-│       ├── pending.js
-│       ├── approved.js
-│       └── rejected.js
+│       ├── auth.js         # POST /api/auth/register, /api/auth/login
+│       └── kyc.js          # GET/POST/PUT/DELETE /api/kyc_submissions
 │
 └── styles/
     ├── main.css            # Entry point — imports all partials
@@ -148,10 +156,10 @@ The frontend is plain HTML — no build step required:
 ```bash
 # From the repo root
 python3 -m http.server 8080
-# Open: http://localhost:8080
+# Open: http://localhost:8080/frontend/
 ```
 
-Or use the VS Code **Live Server** extension.
+Or use the VS Code **Live Server** extension (right-click `frontend/index.html` → Open with Live Server).
 
 > **Note:** Don't open `index.html` directly via `file://` — use a local server so CSS `@import` works correctly.
 
