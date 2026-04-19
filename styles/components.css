@@ -303,3 +303,99 @@ tbody td { padding: 13px 20px; font-size: 13.5px; color: var(--on-surface); vert
 /* ── Section tab toggle ── */
 .section        { display: none; }
 .section.active { display: block; }
+
+/* ── Modal overlay ── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 400;
+  background: rgba(0,0,0,.45); backdrop-filter: blur(2px);
+  display: flex; align-items: center; justify-content: center; padding: 20px;
+}
+.modal-overlay.hidden { display: none; }
+
+.modal {
+  background: var(--surface); border-radius: var(--r-lg);
+  box-shadow: var(--elev-3); width: 100%; max-width: 520px;
+  max-height: 90vh; overflow-y: auto;
+  border: 1px solid var(--outline-var);
+  animation: modalIn .2s ease;
+}
+@keyframes modalIn { from { opacity:0; transform:scale(.96) translateY(12px); } to { opacity:1; transform:none; } }
+
+.modal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 24px 16px; border-bottom: 1px solid var(--outline-var);
+}
+.modal-title { font-size: 16px; font-weight: 700; color: var(--on-surface); }
+.modal-close {
+  width: 32px; height: 32px; border-radius: 50%; border: none;
+  background: var(--surface-1); color: var(--on-surface-var);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background var(--t);
+}
+.modal-close:hover { background: var(--outline-var); }
+.modal-close svg { width: 18px; height: 18px; }
+
+.modal-body { padding: 22px 24px; display: flex; flex-direction: column; gap: 16px; }
+.modal-footer {
+  padding: 16px 24px 20px; border-top: 1px solid var(--outline-var);
+  display: flex; gap: 10px; justify-content: flex-end;
+}
+
+/* ── Form fields (modal) ── */
+.field-group { display: flex; flex-direction: column; gap: 5px; }
+.field-group label { font-size: 12.5px; font-weight: 600; color: var(--on-surface-var); text-transform: uppercase; letter-spacing: .4px; }
+.field-group input,
+.field-group select,
+.field-group textarea {
+  padding: 10px 13px; border-radius: var(--r-md);
+  border: 1.5px solid var(--outline-var);
+  background: var(--surface); color: var(--on-surface);
+  font-size: 13.5px; font-family: inherit;
+  transition: border-color var(--t);
+  outline: none;
+}
+.field-group input:focus,
+.field-group select:focus,
+.field-group textarea:focus { border-color: var(--primary); }
+.field-group textarea { resize: vertical; min-height: 72px; }
+
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+/* ── Primary / ghost buttons ── */
+.btn-primary-solid {
+  padding: 10px 22px; border-radius: var(--r-xl);
+  background: var(--primary); color: #fff;
+  font-size: 13.5px; font-weight: 600; border: none;
+  cursor: pointer; transition: opacity var(--t);
+}
+.btn-primary-solid:hover { opacity: .88; }
+.btn-primary-solid:disabled { opacity: .5; cursor: not-allowed; }
+
+.btn-ghost {
+  padding: 10px 18px; border-radius: var(--r-xl);
+  background: transparent; color: var(--on-surface-var);
+  font-size: 13.5px; font-weight: 500;
+  border: 1.5px solid var(--outline-var);
+  cursor: pointer; transition: background var(--t);
+}
+.btn-ghost:hover { background: var(--surface-1); }
+
+/* ── Inline error banner ── */
+.inline-error {
+  padding: 12px 16px; border-radius: var(--r-md);
+  background: var(--error-container); color: var(--on-error-cont);
+  font-size: 13px; font-weight: 500; display: none;
+}
+.inline-error.visible { display: block; }
+
+/* ── Section toolbar ── */
+.section-toolbar {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* ── Table action buttons ── */
+.btn-edit   { border-color: var(--primary); color: var(--primary); background: transparent; }
+.btn-edit:hover   { background: var(--primary-container); }
+.btn-delete { border-color: var(--error); color: var(--error); background: transparent; }
+.btn-delete:hover { background: var(--error-container); }

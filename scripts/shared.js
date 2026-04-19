@@ -31,14 +31,16 @@ function toggleTheme() {
 function getUser() {
   const email = sessionStorage.getItem('kyc_user_email') || 'officer@forexbroker.com';
   const name  = sessionStorage.getItem('kyc_user_name')  || 'Pouya SM';
+  const role  = sessionStorage.getItem('kyc_user_role')  || 'KYC Officer';
   const inits = name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
-  return { email, name, initials: inits };
+  return { email, name, role, initials: inits };
 }
 
 function populateUser() {
   const user = getUser();
   document.querySelectorAll('.js-user-name').forEach(el => el.textContent = user.name);
   document.querySelectorAll('.js-user-avatar').forEach(el => el.textContent = user.initials);
+  document.querySelectorAll('.js-user-role').forEach(el => el.textContent = user.role);
 }
 
 /* ── Logout ── */

@@ -46,7 +46,7 @@ function renderHeader({ title, subtitle, searchPlaceholder = 'Search clients…'
           <div class="avatar js-user-avatar">PS</div>
           <div class="user-text">
             <span class="user-name js-user-name">Pouya SM</span>
-            <span class="user-role">KYC Officer</span>
+            <span class="user-role js-user-role">KYC Officer</span>
           </div>
         </div>
 

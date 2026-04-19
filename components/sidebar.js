@@ -11,6 +11,7 @@ const SIDEBAR_ICON = {
   rejected: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg>`,
   documents:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>`,
   risk:     `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>`,
+  database: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C7.58 3 4 4.79 4 7v10c0 2.21 3.59 4 8 4s8-1.79 8-4V7c0-2.21-3.58-4-8-4zm0 2c3.87 0 6 1.47 6 2s-2.13 2-6 2-6-1.47-6-2 2.13-2 6-2zm6 12c0 .53-2.13 2-6 2s-6-1.47-6-2v-2.23C7.61 15.55 9.72 16 12 16s4.39-.45 6-1.23V17zm0-4.5c0 .53-2.13 2-6 2s-6-1.47-6-2v-2.23C7.61 11.05 9.72 11.5 12 11.5s4.39-.45 6-1.23V12.5z"/></svg>`,
   close:    `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>`,
   shield:   `<svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l5 2.18V11c0 3.5-2.33 6.79-5 7.93-2.67-1.14-5-4.43-5-7.93V7.18L12 5z"/></svg>`,
 };
@@ -61,8 +62,9 @@ function renderSidebar(activeItem) {
 
         <div class="nav-section">
           <span class="nav-section-label">Review</span>
-          ${_navItem('dashboard.html#documents', 'documents', 'Document Review', { count:11, color:'warning' }, activeItem === 'documents')}
-          ${_navItem('dashboard.html#risk',      'risk',      'Risk Checks',      { count:4,  color:'danger'  }, activeItem === 'risk')}
+          ${_navItem('dashboard.html#documents',    'documents', 'Document Review',  { count:11, color:'warning' }, activeItem === 'documents')}
+          ${_navItem('dashboard.html#risk',         'risk',      'Risk Checks',       { count:4,  color:'danger'  }, activeItem === 'risk')}
+          ${_navItem('dashboard.html#submissions',  'database',  'KYC Submissions',   null,                         activeItem === 'submissions')}
         </div>
       </nav>
 

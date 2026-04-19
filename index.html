@@ -51,11 +51,11 @@
     <p class="auth-copyright">&copy; 2026 ForexKYC Portal &mdash; Secure Compliance System</p>
   </div>
 
+  <script src="scripts/config.js"></script>
   <script>
-    // Apply saved theme
     if (localStorage.getItem('kyc_theme') === 'dark') document.documentElement.setAttribute('data-theme','dark');
 
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       const email    = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
@@ -72,11 +72,30 @@
       btn.disabled = true;
       errorMsg.style.display = 'none';
 
-      setTimeout(function() {
+      try {
+        const res  = await fetch(API_BASE + '/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          errorMsg.textContent = data.error || 'Login failed. Please try again.';
+          errorMsg.style.display = 'block';
+          btn.textContent = 'Sign In';
+          btn.disabled = false;
+          return;
+        }
         sessionStorage.setItem('kyc_logged_in', '1');
-        sessionStorage.setItem('kyc_user_email', email);
+        sessionStorage.setItem('kyc_user_name',  data.user.name);
+        sessionStorage.setItem('kyc_user_role',  data.user.role);
         window.location.href = 'pages/dashboard.html';
-      }, 700);
+      } catch (err) {
+        errorMsg.textContent = 'Unable to reach the server. Is the backend running?';
+        errorMsg.style.display = 'block';
+        btn.textContent = 'Sign In';
+        btn.disabled = false;
+      }
     });
 
     ['email','password'].forEach(function(id) {

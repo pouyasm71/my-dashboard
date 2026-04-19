@@ -65,21 +65,24 @@
     <p class="auth-copyright">&copy; 2026 ForexKYC Portal &mdash; Secure Compliance System</p>
   </div>
 
+  <script src="scripts/config.js"></script>
   <script>
     if (localStorage.getItem('kyc_theme') === 'dark') document.documentElement.setAttribute('data-theme','dark');
 
-    document.getElementById('signupForm').addEventListener('submit', function(e) {
+    document.getElementById('signupForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-      const firstName = document.getElementById('firstName').value.trim();
-      const lastName  = document.getElementById('lastName').value.trim();
-      const email     = document.getElementById('email').value.trim();
-      const password  = document.getElementById('password').value;
-      const confirm   = document.getElementById('confirm').value;
-      const terms     = document.getElementById('terms').checked;
-      const btn       = document.getElementById('registerBtn');
+      const firstName  = document.getElementById('firstName').value.trim();
+      const lastName   = document.getElementById('lastName').value.trim();
+      const email      = document.getElementById('email').value.trim();
+      const department = document.getElementById('department').value.trim();
+      const password   = document.getElementById('password').value;
+      const confirm    = document.getElementById('confirm').value;
+      const terms      = document.getElementById('terms').checked;
+      const btn        = document.getElementById('registerBtn');
 
       if (!firstName || !lastName) return showError('Please enter your full name.');
       if (!email || !email.includes('@')) return showError('Please enter a valid email address.');
+      if (!department) return showError('Please enter your department.');
       if (password.length < 8) return showError('Password must be at least 8 characters.');
       if (password !== confirm) return showError('Passwords do not match.');
       if (!terms) return showError('You must agree to the Terms of Service.');
@@ -87,12 +90,33 @@
       btn.textContent = 'Creating account…';
       btn.disabled = true;
 
-      setTimeout(function() {
+      try {
+        const res  = await fetch(API_BASE + '/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name:     firstName + ' ' + lastName,
+            email,
+            password,
+            role:     department.toLowerCase().replace(/\s+/g, '_'),
+          }),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          showError(data.error || 'Registration failed. Please try again.');
+          btn.textContent = 'Create Account';
+          btn.disabled = false;
+          return;
+        }
         sessionStorage.setItem('kyc_logged_in', '1');
-        sessionStorage.setItem('kyc_user_email', email);
-        sessionStorage.setItem('kyc_user_name', firstName + ' ' + lastName);
+        sessionStorage.setItem('kyc_user_name',  data.user.name);
+        sessionStorage.setItem('kyc_user_role',  data.user.role);
         window.location.href = 'pages/dashboard.html';
-      }, 900);
+      } catch (err) {
+        showError('Unable to reach the server. Is the backend running?');
+        btn.textContent = 'Create Account';
+        btn.disabled = false;
+      }
     });
 
     function showError(msg) {

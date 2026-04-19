@@ -163,10 +163,111 @@
         </div>
       </div><!-- /risk -->
 
+      <!-- ── KYC Submissions ── -->
+      <div class="section" id="sec-submissions">
+        <div class="section-toolbar">
+          <div>
+            <div class="page-title">KYC Submissions</div>
+            <p class="page-subtitle" style="margin-bottom:0">All client verification submissions — live from database</p>
+          </div>
+          <button class="card-action" id="btnAddNew">+ Add New</button>
+        </div>
+
+        <div class="inline-error" id="submissionsError"></div>
+
+        <div class="card">
+          <div class="table-wrap">
+            <table id="submissionsTable">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Client</th>
+                  <th>Email</th>
+                  <th>Document Type</th>
+                  <th>Doc Number</th>
+                  <th>Country</th>
+                  <th>Status</th>
+                  <th>Submitted</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="submissionsTbody">
+                <tr><td colspan="9" style="text-align:center;padding:48px;color:var(--on-surface-var)">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div><!-- /submissions -->
+
     </div><!-- /content -->
+
+    <!-- ── Modal ── -->
+    <div class="modal-overlay hidden" id="modalOverlay">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-header">
+          <span class="modal-title" id="modalTitle">New Submission</span>
+          <button class="modal-close" id="modalClose" aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="inline-error" id="modalError"></div>
+          <div class="field-row">
+            <div class="field-group">
+              <label for="f-clientName">Client Name *</label>
+              <input type="text" id="f-clientName" placeholder="John Smith">
+            </div>
+            <div class="field-group">
+              <label for="f-clientEmail">Client Email *</label>
+              <input type="email" id="f-clientEmail" placeholder="john@example.com">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-group">
+              <label for="f-documentType">Document Type *</label>
+              <select id="f-documentType">
+                <option value="">Select…</option>
+                <option value="passport">Passport</option>
+                <option value="national_id">National ID</option>
+                <option value="drivers_license">Driver's License</option>
+                <option value="utility_bill">Utility Bill</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label for="f-documentNumber">Document Number *</label>
+              <input type="text" id="f-documentNumber" placeholder="AB123456">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-group">
+              <label for="f-country">Country *</label>
+              <input type="text" id="f-country" placeholder="Iran">
+            </div>
+            <div class="field-group">
+              <label for="f-status">Status</label>
+              <select id="f-status">
+                <option value="pending">Pending</option>
+                <option value="under_review">Under Review</option>
+                <option value="approved">Approved</option>
+                <option value="rejected">Rejected</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-group">
+            <label for="f-rejectionReason">Rejection Reason <span style="text-transform:none;font-weight:400">(optional)</span></label>
+            <textarea id="f-rejectionReason" placeholder="Reason for rejection, if applicable…"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-ghost" id="modalCancel">Cancel</button>
+          <button class="btn-primary-solid" id="modalSave">Save Submission</button>
+        </div>
+      </div>
+    </div>
   </div><!-- /main -->
 </div><!-- /layout -->
 
+<script src="../scripts/config.js"></script>
 <script src="../scripts/shared.js"></script>
 <script src="../scripts/data.js"></script>
 <script src="../components/sidebar.js"></script>

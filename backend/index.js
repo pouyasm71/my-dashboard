@@ -8,8 +8,11 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-// const exampleRouter = require('./routes/example');
-// app.use('/api/example', exampleRouter);
+const authRouter = require('./routes/auth');
+const kycRouter = require('./routes/kyc');
+
+app.use('/api/auth', authRouter);
+app.use('/api/kyc_submissions', kycRouter);
 
 app.get('/', (req, res) => {
   res.json({ message: 'Backend is running.' });
