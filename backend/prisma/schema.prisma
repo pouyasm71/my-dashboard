@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  name         String
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  role         String   // support | sales | finance | kyc | ...
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  reviewedSubmissions KycSubmission[] @relation("ReviewedBy")
+
+  @@map("users")
+}
+
+model KycSubmission {
+  id               Int       @id @default(autoincrement())
+  clientName       String    @map("client_name")
+  clientEmail      String    @map("client_email")
+  documentType     String    @map("document_type")   // passport | national_id | drivers_license | utility_bill
+  documentNumber   String    @map("document_number")
+  country          String
+  status           String    @default("pending")     // pending | under_review | approved | rejected
+  rejectionReason  String?   @map("rejection_reason")
+  reviewedBy       Int?      @map("reviewed_by")
+  reviewer         User?     @relation("ReviewedBy", fields: [reviewedBy], references: [id])
+  submittedAt      DateTime  @default(now()) @map("submitted_at")
+  reviewedAt       DateTime? @map("reviewed_at")
+
+  @@map("kyc_submissions")
+}
